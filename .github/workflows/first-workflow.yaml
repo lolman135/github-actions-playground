@@ -5,8 +5,10 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Print hello world
-        run: echo 'Hello world!'
+      - name: Print greetings
+        run: | 
+          echo 'Hello world!'
+          echo Hello, $USER
 
       - name: Print work directory
         run: pwd
