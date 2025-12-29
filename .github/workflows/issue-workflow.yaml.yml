@@ -6,4 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print issue
-        run: echo ${{ toJSON(github.event.details) }}
+        run: |
+          echo ${{ github.event.issue.title }}
+          echo ${{ github.event.issue.description }}

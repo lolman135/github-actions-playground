@@ -20,7 +20,7 @@ class HelloControllerIT @Autowired constructor(private val mockMvc: MockMvc, pri
         mockMvc.get(url){
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
-            status { isNotFound() }
+            status { isOk() }
             content { contentTypeCompatibleWith("application/json") }
         }
     }
