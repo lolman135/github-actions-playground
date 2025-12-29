@@ -1,0 +1,52 @@
+name: Test and Deploy Project
+on:
+  push:
+    branches:
+      - 'master'
+
+#or can be written as:
+#on: push
+#just without specifying branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+
+      - name: Set Up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Set Up Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Run tests
+        run: ./api/gradlew -p api clean test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v6
+
+      - name: Set Up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Set Up Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build Project
+        run: ./api/gradlew -p api clean build
+
+      - name: Mock Deploy
+        run: |
+          echo 'Simulating deploy into external host provider for training CI/CD using GitHub Actions'
+          for i in $(seq 10 10 100); do echo $i%; done
+          echo 'Mock deploy is done'
