@@ -18,7 +18,7 @@ jobs:
       - name: Set Up JDK 21
         uses: actions/setup-java@v5
         with:
-          distribution: 'termium'
+          distribution: 'temurin'
           java-version: '21'
 
       - name: Set Up Gradle
